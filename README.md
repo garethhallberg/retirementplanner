@@ -62,18 +62,28 @@ docker compose up --build
 
 ## Running Tests
 
-### Backend (pytest, in-memory SQLite — no Docker needed)
+Run all tests (backend + frontend) from the project root:
 
 ```bash
-cd backend
-pip install -r requirements.txt
-python3 -m pytest tests/ -v
+make test
 ```
 
-### Frontend (Jest + React Testing Library)
+### Backend only
 
 ```bash
-cd frontend
-npm install
-npm test
+make test-backend
 ```
+
+### Frontend only
+
+```bash
+make test-frontend
+```
+
+### Installing dependencies
+
+```bash
+make install
+```
+
+Requires [uv](https://docs.astral.sh/uv/) for the Python backend and Node.js/npm for the frontend.
