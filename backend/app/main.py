@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
-from app.routers import checklist, financial, goals, users
+from app.routers import auth, checklist, financial, goals, users
 
 app = FastAPI(title=settings.PROJECT_NAME)
 
@@ -14,6 +14,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(auth.router)
 app.include_router(users.router)
 app.include_router(financial.router)
 app.include_router(checklist.router)
