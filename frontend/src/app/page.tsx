@@ -18,7 +18,7 @@ export default function Home() {
         <DashboardCard
           title="Retirement Countdown"
           description="See how long until the big day and what you need to do before then."
-          href="/checklist"
+          href="/countdown"
         />
         <DashboardCard
           title="Bucket List"

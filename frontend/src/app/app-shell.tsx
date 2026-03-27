@@ -44,11 +44,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       }}>
         <strong style={{ fontSize: '1.2rem' }}>Retirement Companion</strong>
         <a href="/" style={{ color: '#bee3f8', textDecoration: 'none' }}>Dashboard</a>
+        <a href="/countdown" style={{ color: '#bee3f8', textDecoration: 'none' }}>Countdown</a>
         <a href="/finances" style={{ color: '#bee3f8', textDecoration: 'none' }}>Finances</a>
         <a href="/checklist" style={{ color: '#bee3f8', textDecoration: 'none' }}>Checklist</a>
         <a href="/goals" style={{ color: '#bee3f8', textDecoration: 'none' }}>Goals</a>
         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <span style={{ fontSize: '0.875rem', color: '#bee3f8' }}>{user?.full_name}</span>
+          <a href="/profile" style={{ fontSize: '0.875rem', color: '#bee3f8', textDecoration: 'none' }}>{user?.full_name}</a>
           <button
             onClick={logout}
             style={{
