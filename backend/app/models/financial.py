@@ -1,8 +1,7 @@
 import uuid
 from datetime import datetime
 
-from sqlalchemy import Column, DateTime, Float, ForeignKey, String
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import Column, DateTime, Float, ForeignKey, String, Uuid
 from sqlalchemy.orm import relationship
 
 from app.core.database import Base
@@ -11,8 +10,8 @@ from app.core.database import Base
 class FinancialAccount(Base):
     __tablename__ = "financial_accounts"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
+    id = Column(Uuid, primary_key=True, default=uuid.uuid4)
+    user_id = Column(Uuid, ForeignKey("users.id"), nullable=False)
     name = Column(String, nullable=False)
     account_type = Column(String, nullable=False)  # pension, ISA, savings, investment, property
     balance = Column(Float, default=0.0)
@@ -28,8 +27,8 @@ class FinancialAccount(Base):
 class NetWorthSnapshot(Base):
     __tablename__ = "net_worth_snapshots"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
+    id = Column(Uuid, primary_key=True, default=uuid.uuid4)
+    user_id = Column(Uuid, ForeignKey("users.id"), nullable=False)
     total_assets = Column(Float, default=0.0)
     total_liabilities = Column(Float, default=0.0)
     net_worth = Column(Float, default=0.0)
