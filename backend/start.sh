@@ -3,8 +3,8 @@ set -e
 
 echo "Waiting for database..."
 while ! python -c "
-import sqlalchemy
-engine = sqlalchemy.create_engine('$DATABASE_URL')
+import os, sqlalchemy
+engine = sqlalchemy.create_engine(os.environ['DATABASE_URL'])
 engine.connect().close()
 " 2>/dev/null; do
   sleep 1
