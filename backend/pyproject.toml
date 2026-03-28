@@ -1,0 +1,27 @@
+[project]
+name = "retirement-companion-backend"
+version = "0.1.0"
+description = "FastAPI backend for the Retirement Transition Companion"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi==0.109.2",
+    "uvicorn[standard]==0.27.1",
+    "sqlalchemy==2.0.25",
+    "alembic==1.13.1",
+    "psycopg2-binary==2.9.9",
+    "pydantic==2.6.1",
+    "pydantic-settings==2.1.0",
+    "python-jose[cryptography]==3.3.0",
+    "passlib[bcrypt]==1.7.4",
+    "bcrypt==4.0.1",
+    "python-multipart==0.0.9",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest==8.0.2",
+    "httpx==0.27.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
