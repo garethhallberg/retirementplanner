@@ -24,3 +24,4 @@ class User(Base):
     net_worth_snapshots = relationship("NetWorthSnapshot", back_populates="user")
     checklist_items = relationship("ChecklistItem", back_populates="user")
     goals = relationship("Goal", back_populates="user")
+    conversations = relationship("Conversation", back_populates="user")

@@ -19,6 +19,8 @@ services:
     build: ./backend
     ports:
       - "8000:8000"
+    env_file:
+      - .env
     environment:
       DATABASE_URL: postgresql://postgres:postgres@db:5432/retirement_app
       SECRET_KEY: local-dev-secret-key-change-in-prod
