@@ -2,6 +2,7 @@ from datetime import datetime
 from uuid import UUID
 
 import anthropic
+import anthropic
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
@@ -18,6 +19,9 @@ from app.schemas.chat import (
 )
 from app.services.coach_context import build_user_context
 from app.services.coach_prompt import build_system_prompt
+
+# Initialize Anthropic client as module-level singleton
+anthropic_client = anthropic.Anthropic(api_key=settings.ANTHROPIC_API_KEY) if settings.ANTHROPIC_API_KEY else None
 
 router = APIRouter(prefix="/api/chat", tags=["chat"])
 
@@ -66,9 +70,11 @@ def send_message(
 
     api_messages = [{"role": m.role, "content": m.content} for m in prior_messages]
 
-    # Call Claude
-    client = anthropic.Anthropic(api_key=settings.ANTHROPIC_API_KEY)
-    response = client.messages.create(
+    # Call Claude using module-level client
+    if not anthropic_client:
+        raise HTTPException(status_code=503, detail="AI coach is not configured. Set ANTHROPIC_API_KEY.")
+    
+    response = anthropic_client.messages.create(
         model=settings.ANTHROPIC_MODEL,
         max_tokens=1024,
         system=system_prompt,
