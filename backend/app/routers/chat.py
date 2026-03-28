@@ -2,7 +2,6 @@ from datetime import datetime
 from uuid import UUID
 
 import anthropic
-import anthropic
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
