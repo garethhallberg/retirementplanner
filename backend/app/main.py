@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
-from app.routers import auth, checklist, countdown, financial, goals, users
+from app.routers import auth, chat, checklist, countdown, financial, goals, users
 
 app = FastAPI(title=settings.PROJECT_NAME)
 
@@ -20,6 +20,7 @@ app.include_router(financial.router)
 app.include_router(checklist.router)
 app.include_router(countdown.router)
 app.include_router(goals.router)
+app.include_router(chat.router)
 
 
 @app.get("/api/health")

@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
 
+# Ensure uv-managed venv is on PATH
+export PATH="/app/.venv/bin:$PATH"
+
 echo "Waiting for database..."
 while ! python -c "
 import os, sqlalchemy

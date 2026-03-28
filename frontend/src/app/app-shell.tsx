@@ -48,6 +48,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <a href="/finances" style={{ color: '#bee3f8', textDecoration: 'none' }}>Finances</a>
         <a href="/checklist" style={{ color: '#bee3f8', textDecoration: 'none' }}>Checklist</a>
         <a href="/goals" style={{ color: '#bee3f8', textDecoration: 'none' }}>Goals</a>
+        <a href="/coach" style={{ color: '#bee3f8', textDecoration: 'none', fontWeight: 500 }}>Coach</a>
         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <a href="/profile" style={{ fontSize: '0.875rem', color: '#bee3f8', textDecoration: 'none' }}>{user?.full_name}</a>
           <button
